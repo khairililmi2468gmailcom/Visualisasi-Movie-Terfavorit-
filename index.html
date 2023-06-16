@@ -1,0 +1,106 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tugas Uas Visualisasi</title>
+    <script src="js/d3.v7.min.js"></script>
+    <style>
+      .dot {
+        fill: steelblue;
+      }
+      .axis--x path {
+        display: none;
+      }
+      .tooltip {
+        position: absolute;
+        text-align: center;
+        padding: 10px;
+        font-size: 12px;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        pointer-events: none;
+      }
+
+      .tooltip-box {
+        fill: white;
+        stroke: #ddd;
+      }
+
+      .tooltip-text {
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Rating Film</h1>
+    <div class="btn-group" data-toggle="buttons">
+      <button class="btn btn-primary active" data-value="bar-chart">
+        Rating Score Movies
+      </button>
+
+      <button class="btn btn-primary" data-value="scatter-chart">
+        Korelasi Anggaran Pendapatan
+      </button>
+      <button class="btn btn-primary" data-value="genre-chart">
+        10 Genre Teratas
+      </button>
+
+      <!-- <button class="btn btn-primary" data-value="pie-chart">Pie Chart</button> -->
+    </div>
+
+    <!-- Add 2 buttons -->
+
+    <!-- Create a div where the graph will take place -->
+
+    <div id="charts">
+      <div id="chart1" class="chart1" "></div>
+      <div id="chart2" class="chart2" style="display: none"></div>
+      <div id="my_dataviz" class="chart3" style="display: none"></div>
+      <!-- <div id="myPieChart"></div> -->
+    </div>
+    <div id="tooltip"></div>
+    <script src="js/bar1.js"></script>
+    <script src="js/scaterCoba.js"></script>
+    <!-- <script src="js/piechart.js"></script> -->
+    <script src="js/genre.js"></script>
+
+    <script>
+      const barChartButton = document.querySelector('[data-value="bar-chart"]');
+      const scatterChartButton = document.querySelector(
+        '[data-value="scatter-chart"]'
+      );
+      const pieChartButton = document.querySelector('[data-value="pie-chart"]');
+      const genreChartButton = document.querySelector(
+        '[data-value="genre-chart"]'
+      );
+
+      const barChart = document.querySelector("#chart1");
+      const scatterChart = document.querySelector("#chart2");
+      const pieChart = document.querySelector("#myPieChart");
+      const genreChart = document.querySelector("#my_dataviz");
+
+      barChartButton.addEventListener("click", () => {
+        barChart.style.display = "block";
+        scatterChart.style.display = "none";
+        // pieChart.style.display = "none";
+        genreChart.style.display = "none";
+      });
+
+      scatterChartButton.addEventListener("click", () => {
+        barChart.style.display = "none";
+        scatterChart.style.display = "block";
+        // pieChart.style.display = "none";
+        genreChart.style.display = "none";
+      });
+
+      genreChartButton.addEventListener("click", () => {
+        barChart.style.display = "none";
+        scatterChart.style.display = "none";
+        // pieChart.style.display = "noene";
+        genreChart.style.display = "block";
+      });
+    </script>
+  </body>
+</html>
